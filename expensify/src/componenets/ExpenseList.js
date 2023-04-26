@@ -5,7 +5,6 @@ const ExpenseList = (props) => (
     <div>
         <h1>Thsi is my Expense List component.</h1>
         {props.expenses.length}
-        {props.filters.text}
 
     </div>
 );

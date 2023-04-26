@@ -6336,11 +6336,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var ExpenseList = function ExpenseList() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Thsi is my dashboard component.");
+
+var ExpenseList = function ExpenseList(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Thsi is my Expense List component."), props.expenses.length, props.filters.text);
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseList);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    expenses: state.reducer.espenses,
+    filters: state.reducer.filters
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps)(ExpenseList));
 
 /***/ }),
 
@@ -47425,13 +47433,10 @@ store.dispatch((0,_actions_filters__WEBPACK_IMPORTED_MODULE_7__.sortBy)('date'))
 var exp = (0,_selectors_selector__WEBPACK_IMPORTED_MODULE_8__.getVisibleExpenses)(store.getState().reducer.espenses, store.getState().reducer.filters);
 console.log(store.getState());
 console.log(exp);
-
-// const jsx = (
-//   <Provider>
-//     <AppRouter store = {store} />
-//   </Provider>
-// )
-react_dom_client__WEBPACK_IMPORTED_MODULE_3__.createRoot(document.getElementById('app')).render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_routers_AppRouter__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+var jsx = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
+  store: store
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_routers_AppRouter__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+react_dom_client__WEBPACK_IMPORTED_MODULE_3__.createRoot(document.getElementById('app')).render(jsx);
 })();
 
 /******/ })()
