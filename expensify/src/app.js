@@ -36,6 +36,10 @@ store.dispatch(sortBy('date'));
 //store.dispatch(setText('whatever'));
 // store.dispatch(setStartDate(55));
 
+setTimeout(()=>{
+  store.dispatch(setText("other"));
+}, 3000)
+
 const exp = selectExpenses(store.getState().reducer.espenses, store.getState().reducer.filters);
 
 console.log(store.getState());
