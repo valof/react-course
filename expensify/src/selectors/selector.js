@@ -1,7 +1,7 @@
 //import {store} from '../store/store'
 
-export const getVisibleExpenses = (store, {sortBy, startDate, endDate, text}) => {
-    return store.filter( expense => {
+export default (expenses, {sortBy, startDate, endDate, text}) => {
+    return expenses.filter( expense => {
       const startMatch = typeof startDate != 'number' || expense.createdAt >=  startDate;
       const endMatch = typeof endDate != 'nunber' || expense.createdAt <=  endDate;
       const textMatch = typeof text != 'string' || expense.description.toLowerCase().includes(text.toLowerCase());

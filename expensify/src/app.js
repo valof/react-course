@@ -8,7 +8,7 @@ import {addExpense, removeExpense, editExpense}  from './actions/expenses';
 import {setText, sortBy, setStartDate, setEndDate} from './actions/filters';
 import {getVisibleExpenses} from './selectors/selector'
 import {v1 as uuid} from 'uuid';
-
+import selectExpenses from './selectors/selector'
 
 import './styles/styles.scss'
 
@@ -36,7 +36,7 @@ store.dispatch(sortBy('date'));
 //store.dispatch(setText('whatever'));
 // store.dispatch(setStartDate(55));
 
-const exp = getVisibleExpenses(store.getState().reducer.espenses, store.getState().reducer.filters);
+const exp = selectExpenses(store.getState().reducer.espenses, store.getState().reducer.filters);
 
 console.log(store.getState());
 
