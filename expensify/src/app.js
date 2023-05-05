@@ -10,6 +10,7 @@ import {getVisibleExpenses} from './selectors/selector'
 import {v1 as uuid} from 'uuid';
 import selectExpenses from './selectors/selector'
 
+
 import './styles/styles.scss'
 
 const store = configureStore();
@@ -28,6 +29,14 @@ const expenseTwo = store.dispatch(addExpense({
     note: 'OMG, this is really not that bad',
     amount: 33300,
     createdAt: 66
+  }));
+
+  const expensethree = store.dispatch(addExpense({
+    id: uuid('der'),
+    description: 'Tooth Expenses',
+    note: 'This is fucking painful.',
+    amount: 1200,
+    createdAt: 365
   }));
 
 store.dispatch(setText("description"));
