@@ -9657,12 +9657,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ExpenseForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExpenseForm */ "./src/componenets/ExpenseForm.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_expenses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/expenses */ "./src/actions/expenses.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 
 
-var AddExpensePage = function AddExpensePage() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Expense Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseForm__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+
+
+
+var AddExpensePage = function AddExpensePage(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Expense Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    onSubmit: function onSubmit(p) {
+      var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+      props.dispatch((0,_actions_expenses__WEBPACK_IMPORTED_MODULE_3__.addExpense)(p));
+      var history = useHistory();
+      navigate.push('/');
+    }
+  }));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddExpensePage);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)()(AddExpensePage));
 
 /***/ }),
 
@@ -9755,8 +9768,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var m = moment__WEBPACK_IMPORTED_MODULE_1___default()().format('MMM Do, YYYY');
-console.log(m);
 var ExpenseForm = /*#__PURE__*/function (_React$Component) {
   _inherits(ExpenseForm, _React$Component);
   var _super = _createSuper(ExpenseForm);
@@ -9771,7 +9782,8 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
       note: '',
       amount: '',
       createdAt: moment__WEBPACK_IMPORTED_MODULE_1___default()(),
-      calendarFocused: false
+      calendarFocused: false,
+      error: ''
     }, _this.onDescriptionChange = function (e) {
       var description = e.target.value;
       _this.setState(function () {
@@ -9788,7 +9800,7 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
       });
     }, _this.onAmountChange = function (e) {
       var amount = e.target.value;
-      if (amount.match(/^\d*(\.\d{0,2})?$/)) {
+      if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
         _this.setState(function () {
           return {
             amount: amount
@@ -9796,11 +9808,13 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
         });
       }
     }, _this.onDateChange = function (createdAt) {
-      _this.setState(function () {
-        return {
-          createdAt: createdAt
-        };
-      });
+      if (createdAt) {
+        _this.setState(function () {
+          return {
+            createdAt: createdAt
+          };
+        });
+      }
     }, _this.onFocusChange = function (_ref) {
       var focused = _ref.focused;
       _this.setState(function () {
@@ -9808,13 +9822,36 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
           calendarFocused: focused
         };
       });
+    }, _this.onSubmit = function (e) {
+      e.preventDefault();
+      if (!_this.state.description || !_this.state.amount) {
+        _this.setState(function () {
+          return {
+            error: 'Please provide description and amount!'
+          };
+        });
+      } else {
+        _this.setState(function () {
+          return {
+            error: ''
+          };
+        });
+        _this.props.onSubmit({
+          description: _this.state.description,
+          amount: parseFloat(_this.state.amount, 10) * 100,
+          createdAt: _this.state.createdAt.valueOf(),
+          note: _this.state.note
+        });
+        console.log('Submitted!');
+      }
     }, _assertThisInitialized(_this)));
   }
   _createClass(ExpenseForm, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, this.state.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, this.state.error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+        onSubmit: this.onSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         placeholder: "Description",
         autoFocus: true,
@@ -9825,10 +9862,6 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Amount",
         value: this.state.amount,
         onChange: this.onAmountChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
-        placeholder: "Add note for your expense",
-        value: this.state.note,
-        onChange: this.onNoteChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_dates__WEBPACK_IMPORTED_MODULE_3__.SingleDatePicker, {
         date: this.state.createdAt // momentPropTypes.momentObj or null
         ,
@@ -9836,13 +9869,16 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
         ,
         focused: this.state.calendarFocused // PropTypes.bool
         ,
-        onFocusChange: function onFocusChange(_ref2) {
-          var focused = _ref2.focused;
-          return _this2.setState({
-            focused: focused
-          });
-        } // PropTypes.func.isRequired
-        // id="your_unique_id" // PropTypes.string.isRequired,
+        onFocusChange: this.onFocusChange // PropTypes.func.isRequired
+        ,
+        numberOfMonths: 1,
+        isOutsideRange: function isOutsideRange() {
+          return false;
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+        placeholder: "Add note for your expense",
+        value: this.state.note,
+        onChange: this.onNoteChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add Expense")));
     }
   }]);
