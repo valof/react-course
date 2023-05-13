@@ -15,7 +15,7 @@ const AppRouter = () => (
       <Routes>
         <Route path="/" element={<ExpenseDashboardPage/>} exact={true}/>
         <Route path="/create" element={<AddExpensedPage/>} />
-        <Route path="/edit/:id" element={<EditExpensedPage/>} />
+        <Route path="/edit/:id" element={<EditExpensedPage />} />
         <Route path="/help" element={<HelpPage/>} />
         <Route path="*" element={<NotFound />} exact={true} />
       </Routes>
@@ -23,6 +23,6 @@ const AppRouter = () => (
   </BrowserRouter>
 
 );
-    
+
 export default AppRouter;
   

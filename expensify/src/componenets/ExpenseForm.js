@@ -5,13 +5,17 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css'
 
 export default class ExpenseForm extends React.Component {
-    state = {
-        description: '',
-        note: '',
-        amount: '',
-        createdAt: moment(),
-        calendarFocused: false,
-        error: ''
+    constructor(props){
+        super(props);
+        this.state = {
+            description: props.expense ? props.expense.description : '',
+            note: props.expense ? props.expense.note: '',
+            amount: props.expense ? (props.expense.amount /100).toString() : '',
+            createdAt: props.expense ? moment(props.expense.createdAt): moment(),
+            id: props.id,
+            calendarFocused: false,
+            error: ''
+        }
     }
     onDescriptionChange = (e) => {
         const description = e.target.value;
@@ -28,19 +32,19 @@ export default class ExpenseForm extends React.Component {
         }
     }
 
-    onDateChange = (createdAt) => {
-        if (createdAt) {
-            this.setState(() => ({createdAt}));
-        }
-    }
-
-    // onDateChange = (moment) => {
-    //     if (moment) {
-    //         this.setState(function (state, prop) {
-    //             return {createdAt: moment}
-    //         });
+    // onDateChange = (createdAt) => {
+    //     if (createdAt) {
+    //         this.setState(() => ({createdAt}));
     //     }
     // }
+
+    onDateChange = (moment) => {
+        if (moment) {
+            this.setState(function (state, prop) {
+                return {createdAt: moment}
+            });
+        }
+    }
     
     onFocusChange = ({focused}) => {
         this.setState(() => ({calendarFocused: focused}));
@@ -70,7 +74,6 @@ export default class ExpenseForm extends React.Component {
                     <input
                         type = "text"
                         placeholder = "Description"
-                        autoFocus 
                         value = {this.state.description}
                         onChange = {this.onDescriptionChange}/>
                     <input 
@@ -89,9 +92,8 @@ export default class ExpenseForm extends React.Component {
                         />
                     <textarea 
                         placeholder = "Add note for your expense"
-                        value = {this.state.note}
+//                        value = {this.state.note}
                         onChange = {this.onNoteChange}>
-                        
                     </textarea>
                      <button>Add Expense</button>
                 </form>

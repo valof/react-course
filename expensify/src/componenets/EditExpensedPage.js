@@ -1,16 +1,45 @@
 import React from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate} from 'react-router-dom';
+import {connect} from 'react-redux'
+import {addExpense, removeExpense, editExpense}  from '../actions/expenses';
+import ExpenseForm from './ExpenseForm';
+
+let id;
 
 const EditExpensedPage = (props) => {
-
-    let x = useParams(); 
-
-    console.log(props);
+    const navigate =useNavigate()
     return (
-        <div>
-            This is my Edit expense page, parameter {x.id}
-        </div>
-    );
+            <div>
+                <ExpenseForm
+                    expense = {props.expense}
+                    onSubmit = {(p) => {
+                        props.dispatch(editExpense({...p, id: props.expense.id}));
+                        console.log('updated', p) ;
+                        navigate('/');
+                        id = undefined
+                    }}
+                />
+                <button onClick={() => {
+                    props.dispatch(removeExpense({id:props.expense.id}))
+                    navigate('/');
+                    id = undefined
+                }}>Remove</button>
+            </div>
+        );
+}
+
+
+
+const mapStateToProps = (state) => {
+    if ( ! id ){
+        const x = useParams();
+        id = x.id;
+    }
+    return {
+        expense: state.reducer.espenses.find((it) => {
+            return id === it.id;
+        })
+    };
 };
 
-export default EditExpensedPage;
+export default connect(mapStateToProps)(EditExpensedPage);
