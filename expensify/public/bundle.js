@@ -9696,54 +9696,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_expenses__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/expenses */ "./src/actions/expenses.js");
 /* harmony import */ var _ExpenseForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ExpenseForm */ "./src/componenets/ExpenseForm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
 
 
-var EditExpensedPage = /*#__PURE__*/function (_React$Component) {
-  _inherits(EditExpensedPage, _React$Component);
-  var _super = _createSuper(EditExpensedPage);
-  function EditExpensedPage(props) {
-    var _this;
-    _classCallCheck(this, EditExpensedPage);
-    _this = _super.call(this, props);
-    var x = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
-    console.log(props);
-    console.log(x);
-    return _this;
-  }
-  _createClass(EditExpensedPage, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        expense: props.expense,
-        onSubmit: function onSubmit(p) {
-          props.dispatch((0,_actions_expenses__WEBPACK_IMPORTED_MODULE_2__.editExpense)(p));
-          console.log('updated', p);
-        }
-      }));
+var id;
+var EditExpensedPage = function EditExpensedPage(props) {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    expense: props.expense,
+    onSubmit: function onSubmit(p) {
+      props.dispatch((0,_actions_expenses__WEBPACK_IMPORTED_MODULE_2__.editExpense)(_objectSpread(_objectSpread({}, p), {}, {
+        id: props.expense.id
+      })));
+      console.log('updated', p);
+      navigate('/');
+      id = undefined;
     }
-  }]);
-  return EditExpensedPage;
-}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
-;
-var mapStateToProps = function mapStateToProps(state, props) {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: function onClick() {
+      props.dispatch((0,_actions_expenses__WEBPACK_IMPORTED_MODULE_2__.removeExpense)({
+        id: props.expense.id
+      }));
+      navigate('/');
+      id = undefined;
+    }
+  }, "Remove"));
+};
+var mapStateToProps = function mapStateToProps(state) {
+  if (!id) {
+    var x = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
+    id = x.id;
+  }
   return {
     expense: state.reducer.espenses.find(function (it) {
-      return props.id === it.it;
+      return id === it.id;
     })
   };
 };
@@ -9848,11 +9841,11 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
         });
       }
     };
-    _this.onDateChange = function (createdAt) {
-      if (createdAt) {
-        _this.setState(function () {
+    _this.onDateChange = function (moment) {
+      if (moment) {
+        _this.setState(function (state, prop) {
           return {
-            createdAt: createdAt
+            createdAt: moment
           };
         });
       }
@@ -9891,7 +9884,7 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       description: props.expense ? props.expense.description : '',
       note: props.expense ? props.expense.note : '',
-      amount: props.expense ? (props.expense.amount / 100).toString : '',
+      amount: props.expense ? (props.expense.amount / 100).toString() : '',
       createdAt: props.expense ? moment__WEBPACK_IMPORTED_MODULE_1___default()(props.expense.createdAt) : moment__WEBPACK_IMPORTED_MODULE_1___default()(),
       id: props.id,
       calendarFocused: false,
@@ -9907,7 +9900,6 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         placeholder: "Description",
-        autoFocus: true,
         value: this.state.description,
         onChange: this.onDescriptionChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -9929,8 +9921,9 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
           return false;
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
-        placeholder: "Add note for your expense",
-        value: this.state.note,
+        placeholder: "Add note for your expense"
+        //                        value = {this.state.note}
+        ,
         onChange: this.onNoteChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add Expense")));
     }
@@ -9995,27 +9988,95 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_filters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/filters */ "./src/actions/filters.js");
+/* harmony import */ var react_dates__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dates */ "./node_modules/react-dates/index.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
-var ExpenseFilterList = function ExpenseFilterList(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    value: props.filters.text,
-    onChange: function onChange(e) {
-      props.dispatch((0,_actions_filters__WEBPACK_IMPORTED_MODULE_2__.setText)(e.target.value));
+
+
+var ExpenseFilterList = /*#__PURE__*/function (_React$Component) {
+  _inherits(ExpenseFilterList, _React$Component);
+  var _super = _createSuper(ExpenseFilterList);
+  function ExpenseFilterList() {
+    var _this;
+    _classCallCheck(this, ExpenseFilterList);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    value: props.filters.sortBy,
-    onChange: function onChange(e) {
-      props.dispatch((0,_actions_filters__WEBPACK_IMPORTED_MODULE_2__.sortBy)(e.target.value));
+    return _possibleConstructorReturn(_this, (_this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+      calendarFocused: null
+    }, _this.onDatesChage = function (_ref) {
+      var startDate = _ref.startDate,
+        endDate = _ref.endDate;
+      if (startDate != null) {
+        _this.props.dispatch((0,_actions_filters__WEBPACK_IMPORTED_MODULE_2__.setStartDate)(startDate.valueOf()));
+      } else {
+        _this.props.dispatch((0,_actions_filters__WEBPACK_IMPORTED_MODULE_2__.setStartDate)(undefined));
+      }
+      if (endDate != null) {
+        _this.props.dispatch((0,_actions_filters__WEBPACK_IMPORTED_MODULE_2__.setEndDate)(endDate.valueOf()));
+      }
+      _this.props.dispatch((0,_actions_filters__WEBPACK_IMPORTED_MODULE_2__.setEndDate)(undefined));
+    }, _this.onFocusChange = function (calendarFocused) {
+      _this.setState(function () {
+        return {
+          calendarFocused: calendarFocused
+        };
+      });
+    }, _assertThisInitialized(_this)));
+  }
+  _createClass(ExpenseFilterList, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        value: this.props.filters.text,
+        onChange: function onChange(e) {
+          _this2.props.dispatch((0,_actions_filters__WEBPACK_IMPORTED_MODULE_2__.setText)(e.target.value));
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+        value: this.props.filters.sortBy,
+        onChange: function onChange(e) {
+          _this2.props.dispatch((0,_actions_filters__WEBPACK_IMPORTED_MODULE_2__.sortBy)(e.target.value));
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+        value: "date"
+      }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+        value: "amount"
+      }, "Amount")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_dates__WEBPACK_IMPORTED_MODULE_3__.DateRangePicker, {
+        startDateId: "Whatever The Fuck YouNeed, DateRangePicker",
+        endDateId: "Whatever The Fuck You Need for the EndDateId, DateRangePicker",
+        startDate: this.props.filters.startDate === undefined ? null : moment__WEBPACK_IMPORTED_MODULE_4___default()(this.props.filters.startDate),
+        endDate: this.props.filters.endDate === undefined ? null : moment__WEBPACK_IMPORTED_MODULE_4___default()(this.props.filters.endDate),
+        onDatesChange: this.onDatesChage,
+        focusedInput: this.state.calendarFocused,
+        onFocusChange: this.onFocusChange,
+        numberOfMonths: 1,
+        isOutsideRange: function isOutsideRange() {
+          return false;
+        },
+        showClearDates: true
+      }));
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "date"
-  }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "amount"
-  }, "Amount")));
-};
+  }]);
+  return ExpenseFilterList;
+}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
 var mapStateToProps = function mapStateToProps(state) {
   return {
     filters: state.reducer.filters
@@ -10038,29 +10099,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var _actions_expenses__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/expenses */ "./src/actions/expenses.js");
-
-
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 
 
 var ExpenseListItem = function ExpenseListItem(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.NavLink, {
     to: '/edit/' + props.expense.id,
     className: function className(_ref) {
       var isActive = _ref.isActive;
       return isActive ? 'is-active' : 'inactive';
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "This is my Expense # ", props.index + 1, ":")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null), "Description: ", props.expense.description, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null), "Amount: ", props.expense.amount, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null), "CreatedAt: ", props.expense.createdAt, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: function onClick() {
-      props.dispatch((0,_actions_expenses__WEBPACK_IMPORTED_MODULE_2__.removeExpense)({
-        id: props.expense.id
-      }));
-    }
-  }, "Remove"));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "This is my Expense # ", props.index + 1, ":")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null), "Description: ", props.expense.description, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null), "Amount: ", props.expense.amount, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null), "CreatedAt: ", props.expense.createdAt, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)()(ExpenseListItem));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseListItem);
 
 /***/ }),
 
@@ -10218,7 +10269,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "reducerFilter": () => (/* binding */ reducerFilter),
 /* harmony export */   "sliceFilters": () => (/* binding */ sliceFilters)
 /* harmony export */ });
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -10226,14 +10279,15 @@ function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key i
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
+
 var initialFilterState = {
   text: '',
   sortBy: 'date',
   // date or amount
-  startDate: undefined,
-  endDate: undefined
+  startDate: moment__WEBPACK_IMPORTED_MODULE_0___default()().startOf('month').valueOf(),
+  endDate: moment__WEBPACK_IMPORTED_MODULE_0___default()().endOf('month').valueOf()
 };
-var sliceFilters = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
+var sliceFilters = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)({
   name: 'filters',
   initialState: initialFilterState,
   // Define initial state

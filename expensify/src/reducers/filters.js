@@ -1,11 +1,11 @@
 import { createSlice} from '@reduxjs/toolkit'
-
+import moment from 'moment';
 
 const initialFilterState = {
     text: '',
     sortBy: 'date', // date or amount
-    startDate: undefined,
-    endDate: undefined
+    startDate: moment().startOf('month').valueOf(),
+    endDate: moment().endOf('month').valueOf()
   } 
   
   export const sliceFilters = createSlice({
