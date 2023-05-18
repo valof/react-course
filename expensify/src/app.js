@@ -16,7 +16,6 @@ import './styles/styles.scss'
 const store = configureStore();
 
 const expenseOne = store.dispatch(addExpense({
-    id: uuid('test'),
     description: 'Whatever description',
     note: 'This was the final payment for that address',
     amount: 54500,
@@ -24,7 +23,6 @@ const expenseOne = store.dispatch(addExpense({
   }));
 
 const expenseTwo = store.dispatch(addExpense({
-    id: uuid('wer'),
     description: 'Other Description',
     note: 'OMG, this is really not that bad',
     amount: 33300,
@@ -32,7 +30,6 @@ const expenseTwo = store.dispatch(addExpense({
   }));
 
   const expensethree = store.dispatch(addExpense({
-    id: uuid('der'),
     description: 'Tooth Expenses',
     note: 'This is fucking painful.',
     amount: 1200,

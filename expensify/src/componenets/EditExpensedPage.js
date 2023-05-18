@@ -8,6 +8,7 @@ let id;
 
 const EditExpensedPage = (props) => {
     const navigate =useNavigate()
+    id = undefined
     return (
             <div>
                 <ExpenseForm
@@ -16,13 +17,12 @@ const EditExpensedPage = (props) => {
                         props.dispatch(editExpense({...p, id: props.expense.id}));
                         console.log('updated', p) ;
                         navigate('/');
-                        id = undefined
+
                     }}
                 />
                 <button onClick={() => {
                     props.dispatch(removeExpense({id:props.expense.id}))
                     navigate('/');
-                    id = undefined
                 }}>Remove</button>
             </div>
         );
