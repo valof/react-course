@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 
 
-const ExpenseListItem = (props) => (
+export const ExpenseListItem = (props) => (
   <div >
     <NavLink to={'/edit/'+props.expense.id} className={({ isActive }) => (isActive ? 'is-active' : 'inactive')}>
       <h3>This is my Expense # {props.index+1}:</h3>

@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ExportList with expenses 1`] = `
+<div>
+  <div>
+    <a
+      className="inactive"
+      href="/edit/1"
+      onClick={[Function]}
+    >
+      <h3>
+        This is my Expense # 
+        1
+        :
+      </h3>
+    </a>
+    <p />
+    Description: 
+    Mortgage
+    <p />
+    Amount: 
+    505055
+    <p />
+    CreatedAt: 
+    0
+    <p />
+  </div>
+  <div>
+    <a
+      className="inactive"
+      href="/edit/2"
+      onClick={[Function]}
+    >
+      <h3>
+        This is my Expense # 
+        2
+        :
+      </h3>
+    </a>
+    <p />
+    Description: 
+    Хуёргадж
+    <p />
+    Amount: 
+    54000
+    <p />
+    CreatedAt: 
+    -345600000
+    <p />
+  </div>
+  <div>
+    <a
+      className="inactive"
+      href="/edit/3"
+      onClick={[Function]}
+    >
+      <h3>
+        This is my Expense # 
+        3
+        :
+      </h3>
+    </a>
+    <p />
+    Description: 
+    Что угодно
+    <p />
+    Amount: 
+    540
+    <p />
+    CreatedAt: 
+    345600000
+    <p />
+  </div>
+  <div>
+    <a
+      className="inactive"
+      href="/edit/4"
+      onClick={[Function]}
+    >
+      <h3>
+        This is my Expense # 
+        4
+        :
+      </h3>
+    </a>
+    <p />
+    Description: 
+    mar rent
+    <p />
+    Amount: 
+    50
+    <p />
+    CreatedAt: 
+    1728000000
+    <p />
+  </div>
+</div>
+`;
+
+exports[`should render message "No expenses!" 1`] = `
+<div>
+  <p>
+    No expenses!
+  </p>
+</div>
+`;

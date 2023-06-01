@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ExportList with expenses 1`] = `
+<div>
+  <a
+    className="inactive"
+    href="/edit/1"
+    onClick={[Function]}
+  >
+    <h3>
+      This is my Expense # 
+      1
+      :
+    </h3>
+  </a>
+  <p />
+  Description: 
+  Mortgage
+  <p />
+  Amount: 
+  505055
+  <p />
+  CreatedAt: 
+  0
+  <p />
+</div>
+`;

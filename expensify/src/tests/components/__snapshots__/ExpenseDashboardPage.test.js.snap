@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Expense Dashboard page correctly 1`] = `
+<div>
+  <Memo(Connect(ExpenseFilterList)) />
+  <Memo(Connect(ExpenseList)) />
+</div>
+`;
