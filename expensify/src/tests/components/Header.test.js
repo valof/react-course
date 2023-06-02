@@ -3,8 +3,6 @@ import { MemoryRouter } from "react-router-dom";
 import TestRenderer from 'react-test-renderer';
 import Header from '../../componenets/Header'
 
-
-
 test ('should render Header say "Expensify!" and render correctly', () => {
     const testRenderer = TestRenderer.create(
         <MemoryRouter>

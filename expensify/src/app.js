@@ -9,7 +9,7 @@ import {setText, sortBy, setStartDate, setEndDate} from './actions/filters';
 import {getVisibleExpenses} from './selectors/selector'
 import {v1 as uuid} from 'uuid';
 import selectExpenses from './selectors/selector'
-
+import 'react-dates/lib/css/_datepicker.css'
 
 import './styles/styles.scss'
 
