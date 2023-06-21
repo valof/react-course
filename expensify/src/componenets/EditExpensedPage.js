@@ -7,14 +7,14 @@ import ExpenseForm from './ExpenseForm';
 let id;
 
 const EditExpensedPage = (props) => {
-    const navigate =useNavigate()
-    id = undefined
+    let { id } = useParams();
+    const navigate = useNavigate();
     return (
             <div>
                 <ExpenseForm
                     expense = {props.expense}
                     onSubmit = {(p) => {
-                        props.dispatch(editExpense({...p, id: props.expense.id}));
+                        props.dispatch(editExpense({...p, id: id}));
                         console.log('updated', p) ;
                         navigate('/');
 
@@ -31,14 +31,15 @@ const EditExpensedPage = (props) => {
 
 
 const mapStateToProps = (state) => {
-    if ( ! id ){
+    if ( !id ){
         const x = useParams();
         id = x.id;
     }
+    const exp = state.reducer.espenses.find((it) => {
+        return id === it.id;
+    })
     return {
-        expense: state.reducer.espenses.find((it) => {
-            return id === it.id;
-        })
+        expense: exp
     };
 };
 
